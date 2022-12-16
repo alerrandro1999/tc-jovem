@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MembroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'index']);
+
+Route::get('/dashboard', [AuthController::class, 'dashboard']);
+
+Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
+
+Route::get('/cadastro', [MembroController::class, 'index'])->name('cadastro');
+
+
+
+
+Route::post('/customlogin', [AuthController::class, 'customLogin'])->name('auth.login');
