@@ -23,7 +23,12 @@ Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::get('/cadastro', [MembroController::class, 'index'])->name('cadastro');
 
+Route::get('/novo-membro', [MembroController::class, 'novoMembro'])->name('membro.novo');
+
+
 
 
 
 Route::post('/customlogin', [AuthController::class, 'customLogin'])->name('auth.login');
+
+Route::post('/cadastro', [MembroController::class, 'cadastroMembro'])->name('membro.cadastro');
