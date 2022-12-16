@@ -9,10 +9,11 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form method="POST" action="{{ route('auth.login') }}">
+                        @csrf
                         <div class="form-group">
                             <label>Usuário</label>
-                            <input type="text" class="form-control" name="user" placeholder="Usuário">
+                            <input type="text" class="form-control" name="name" placeholder="Usuário">
                         </div>
                         <div class="form-group">
                             <label>Senha</label>
@@ -20,6 +21,18 @@
                         </div>
                         <button type="submit" class="btn bg-dark btn-flat text-light m-b-30 m-t-30">Entrar</button>
                     </form>
+                    @if (session('invalido'))
+                        {{-- <div class="alert alert-danger" role="alert">
+                            {{session('invalido')}}
+                        </div> --}}
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Error</span>
+                            {{session('invalido')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
