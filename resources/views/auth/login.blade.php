@@ -22,9 +22,6 @@
                         <button type="submit" class="btn bg-dark btn-flat text-light m-b-30 m-t-30">Entrar</button>
                     </form>
                     @if (session('invalido'))
-                        {{-- <div class="alert alert-danger" role="alert">
-                            {{session('invalido')}}
-                        </div> --}}
                         <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                             <span class="badge badge-pill badge-danger">Error</span>
                             {{session('invalido')}}
