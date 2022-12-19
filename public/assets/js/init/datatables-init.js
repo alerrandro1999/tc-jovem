@@ -18,7 +18,18 @@
 		dom: 'lBfrtip',
 		lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
 		buttons: [
-			'excel', 'print'
+			{
+				extend: 'excel',
+				exportOptions: {
+					columns: [0, 1, 2, 3, 4, 5] 
+				}
+			},
+			{
+				extend: 'print',
+				exportOptions: {
+					columns: [0, 1, 2, 3, 4, 5] 
+				}
+			}
 		],
 		"language": {
 			"url": "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json"
