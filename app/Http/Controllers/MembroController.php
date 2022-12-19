@@ -32,7 +32,7 @@ class MembroController extends Controller
     {
         $data['nome']            = $request['nome'];
         $data['contato']         = $request['contato'];
-        $data['data-nascimento'] = $request['data-nascimento'];
+        $data['data_nascimento'] = $request['data-nascimento'];
         $data['batizado']        = $request['batizado'];
         $data['status']          = $request['status'];
         $data['data-entrada']    = $request['data-entrada'];
@@ -41,6 +41,10 @@ class MembroController extends Controller
             $data
         ]);
 
-        redirect('/cadastro')->with('cadastrado', "Usuário cadastrado com sucesso");
+        redirect('cadastro')->with('cadastrado', "Usuário cadastrado com sucesso");
     }
+
+    
+
+
 }

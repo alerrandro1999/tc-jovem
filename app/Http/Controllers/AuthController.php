@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Membros;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\MembroController;
 
 class AuthController extends Controller
 {
@@ -62,10 +64,25 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('dashboard');
+            $data = Membros::all();
+            $count = Membros::count();
+            $ativos = Membros::getAtivos();
+            $inativos = Membros::getinativos();
+            $aniversarios = Membros::getAniversariantes();
+            $countNiver = Membros::getCountAniversariantes();
+            $niverDay = Membros::getDayAniversariantes();
+
+
+            return view('dash', [ 'data'         => $data, 
+                                  'count'        => $count,
+                                  'ativos'       => $ativos,
+                                  'inativos'     => $inativos,
+                                  'aniversarios' => $aniversarios,
+                                  'countNiver'   => $countNiver,
+                                  'niverDay'     => $niverDay]);
         }
 
-        return redirect("/")->with('invalido','Você não tem permissão');
+        return redirect("/")->with('invalido', 'Você não tem permissão');
     }
 
     public function signOut()
