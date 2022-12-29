@@ -5,17 +5,9 @@
 	/*  Data Table
 	-------------*/
 
-
-
-
-	$('#bootstrap-data-table').DataTable({
-		lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
-	});
-
-
-
 	$('#cadastro-table').DataTable({
 		dom: 'lBfrtip',
+		order:[0, 'asc'],
 		lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
 		buttons: [
 			{

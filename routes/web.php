@@ -25,6 +25,9 @@ Route::get('/cadastro', [MembroController::class, 'index'])->name('cadastro');
 
 Route::get('/novo-membro', [MembroController::class, 'novoMembro'])->name('membro.novo');
 
+Route::get('/atualizar-membro/{id}', [MembroController::class, 'novoMembro'])->name('membro.updatecheck');
+
+
 
 
 
@@ -32,3 +35,5 @@ Route::get('/novo-membro', [MembroController::class, 'novoMembro'])->name('membr
 Route::post('/customlogin', [AuthController::class, 'customLogin'])->name('auth.login');
 
 Route::post('/cadastro', [MembroController::class, 'cadastroMembro'])->name('membro.cadastro');
+
+Route::put('/update', [MembroController::class, 'update'])->name('membro.update');

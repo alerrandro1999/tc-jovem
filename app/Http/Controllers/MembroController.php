@@ -13,21 +13,23 @@ class MembroController extends Controller
     public function index()
     {
         $data = Membros::all();
-
         if (Auth::check()) {
             return view('cadastro', ['data' => $data]);
         }
         return redirect("/")->with('invalido', 'Você não tem permissão');
     }
 
-    public function novoMembro()
+    public function novoMembro(Request $request)
     {
+        $data = Membros::find($request['id']);
+
         if (Auth::check()) {
-            return view('novomembro');
+            return view('novomembro', ['data' => $data]);
         }
         return redirect("/")->with('invalido', 'Você não tem permissão');
     }
 
+   
     public function cadastroMembro(Request $request)
     {
         $data['nome']            = $request['nome'];
@@ -35,16 +37,28 @@ class MembroController extends Controller
         $data['data_nascimento'] = $request['data-nascimento'];
         $data['batizado']        = $request['batizado'];
         $data['status']          = $request['status'];
-        $data['data-entrada']    = $request['data-entrada'];
+        $data['data_entrada']    = $request['data-entrada'];
 
-        DB::table('membros')->insert([
-            $data
-        ]);
-
-        redirect('cadastro')->with('cadastrado', "Usuário cadastrado com sucesso");
+        DB::table('membros')->insert([$data]);
+        
+        return redirect()->route('cadastro')->with('cadastrado', "Membro cadastrado com sucesso");
     }
 
-    
+    public function update(Request $request)
+    {
+        $membro = Membros::find($request['id']);
+        $membro->nome               = $request['nome'];   
+        $membro->contato            = $request['contato'];
+        $membro->data_nascimento    = $request['data-nascimento'];
+        $membro->batizado           = $request['batizado'];
+        $membro->status             = $request['status'];
+        $membro->data_entrada       = $request['data-entrada'];
+
+        $membro->save();
+
+        return redirect()->route('cadastro')->with('cadastrado', "Membro Atualizado com sucesso");
+    }
+
 
 
 }

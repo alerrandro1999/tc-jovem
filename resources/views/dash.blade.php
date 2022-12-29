@@ -62,18 +62,19 @@
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Aniversariantes do més <small><span
-                                        class="badge badge-success float-right mt-1">{{$countNiver}}</span></small></strong>
+                                        class="badge badge-success float-right mt-1">{{ $countNiver }}</span></small></strong>
                         </div>
                         <div class="card-body">
                             @foreach ($aniversarios as $pessoa)
-                                <p class="card-text">{{$pessoa['nome']}} | {{ date('d/m/Y', strtotime($pessoa['data_nascimento'])) }}</p>
+                                <p class="card-text">{{ $pessoa['nome'] }} |
+                                    {{ date('d/m/Y', strtotime($pessoa['data_nascimento'])) }}</p>
                             @endforeach
                         </div>
                     </div>
                 </div>
             @endif
 
-            
+
             @if ($niverDay)
                 <div class="col-md-6">
                     <div class="card">
@@ -82,7 +83,8 @@
                         </div>
                         <div class="card-body">
                             @foreach ($niverDay as $pessoa)
-                                <p class="card-text">{{$pessoa['nome']}} | {{ date('d/m/Y', strtotime($pessoa['data_nascimento'])) }}</p>
+                                <p class="card-text">{{ $pessoa['nome'] }} |
+                                    {{ date('d/m/Y', strtotime($pessoa['data_nascimento'])) }}</p>
                             @endforeach
                         </div>
                     </div>
@@ -103,7 +105,6 @@
                             <table id="cadastro-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nome</th>
                                         <th>Contato</th>
                                         <th>Data Nascimento</th>
@@ -117,7 +118,6 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item['id'] }}</td>
                                             <td>{{ $item['nome'] }}</td>
                                             <td>{{ $item['contato'] }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item['data_nascimento'])) }}</td>
@@ -135,18 +135,17 @@
                                                     <span class="badge badge-danger">Inativo</span>
                                                 @endif
                                             </td>
-                                            <td>{{ date('d/m/Y', strtotime($item['data-entrada'])) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($item['data_entrada'])) }}</td>
                                             <td>
-                                                <a href="{{ route('membro.novo') }}/{{ $item['id'] }}" type="button"
-                                                    class="btn btn-primary mb-3"><i class="fa fa-edit (alias)"></i>&nbsp;
+                                                <a href="{{ route('membro.updatecheck', $item['id']) }}" type="button" class="btn btn-primary mb-3"><i
+                                                        class="fa fa-edit (alias)"></i>&nbsp;
                                                     Editar</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('membro.novo') }}/{{ $item['id'] }}" type="button"
-                                                    class="btn btn-danger mb-3"><i class="fa fa-regular fa-trash"></i>&nbsp;
+                                                <a href="" type="button" class="btn btn-danger mb-3"><i
+                                                        class="fa fa-regular fa-trash"></i>&nbsp;
                                                     Excluir</a>
                                             </td>
-
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -154,8 +153,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
