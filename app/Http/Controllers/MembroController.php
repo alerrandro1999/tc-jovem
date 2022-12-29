@@ -41,7 +41,7 @@ class MembroController extends Controller
 
         DB::table('membros')->insert([$data]);
         
-        return redirect()->route('cadastro')->with('cadastrado', "Membro cadastrado com sucesso");
+        return redirect()->route('dashboard')->with('cadastrado', "Membro cadastrado com sucesso");
     }
 
     public function update(Request $request)
@@ -56,9 +56,13 @@ class MembroController extends Controller
 
         $membro->save();
 
-        return redirect()->route('cadastro')->with('cadastrado', "Membro Atualizado com sucesso");
+        return redirect()->route('dashboard')->with('cadastrado', "Membro Atualizado com sucesso");
     }
 
-
-
+    public function delete($id)
+    {
+        $membro = Membros::find($id);
+        $membro->delete();
+        return redirect()->route('dashboard')->with('deletado', "Membro deletado com sucesso");
+    }
 }

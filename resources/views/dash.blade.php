@@ -1,7 +1,24 @@
 @extends('dashboard')
 @section('dashboard')
     <div class="content">
-
+        @if (session('cadastrado'))
+            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                <span class="badge badge-pill badge-success">Sucesso</span>
+                {{ session('cadastrado') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if (session('deletado'))
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                <span class="badge badge-pill badge-success">Sucesso</span>
+                {{ session('deletado') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="card">
@@ -137,14 +154,15 @@
                                             </td>
                                             <td>{{ date('d/m/Y', strtotime($item['data_entrada'])) }}</td>
                                             <td>
-                                                <a href="{{ route('membro.updatecheck', $item['id']) }}" type="button" class="btn btn-primary mb-3"><i
-                                                        class="fa fa-edit (alias)"></i>&nbsp;
+                                                <a href="{{ route('membro.updatecheck', $item['id']) }}" type="button"
+                                                    class="btn btn-primary mb-3"><i class="fa fa-edit (alias)"></i>&nbsp;
                                                     Editar</a>
                                             </td>
                                             <td>
-                                                <a href="" type="button" class="btn btn-danger mb-3"><i
-                                                        class="fa fa-regular fa-trash"></i>&nbsp;
+                                                <a href="{{ route('membro.delete', $item['id']) }}" type="button"
+                                                    class="btn btn-danger mb-3"><i class="fa fa-regular fa-trash"></i>&nbsp;
                                                     Excluir</a>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
