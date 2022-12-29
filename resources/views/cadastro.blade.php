@@ -1,7 +1,6 @@
 @extends('dashboard')
 @section('dashboard')
     <div class="content">
-        {{-- {{dd($data)}} --}}
         <div class="col-md-4 ml-auto text-right no-gutters">
             <a href="{{ route('membro.novo') }}" type="button" class="btn btn-primary mb-3"><i
                     class="fa fa-plus-circle"></i>&nbsp; Novo Membro</a>
@@ -29,7 +28,6 @@
                             <table id="cadastro-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nome</th>
                                         <th>Contato</th>
                                         <th>Data Nascimento</th>
@@ -43,10 +41,9 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td>{{ $item['id'] }}</td>
                                             <td>{{ $item['nome'] }}</td>
                                             <td>{{ $item['contato'] }}</td>
-                                            <td>{{ date('d/m/Y', strtotime($item['data-nascimento'])) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($item['data_nascimento'])) }}</td>
                                             <td>
                                                 @if ($item['batizado'] == 1)
                                                     <span class="badge badge-success">Sim</span>
@@ -61,14 +58,15 @@
                                                     <span class="badge badge-danger">Inativo</span>
                                                 @endif
                                             </td>
-                                            <td>{{ date('d/m/Y', strtotime($item['data-entrada'])) }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($item['data_entrada'])) }}</td>
+
                                             <td>
-                                                <a href="{{ route('membro.novo') }}/{{ $item['id'] }}" type="button"
+                                                <a href="{{ route('membro.updatecheck', $item['id']) }}" type="button"
                                                     class="btn btn-primary mb-3"><i class="fa fa-edit (alias)"></i>&nbsp;
                                                     Editar</a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('membro.novo') }}/{{ $item['id'] }}" type="button"
+                                                <a href="" type="button"
                                                     class="btn btn-danger mb-3"><i class="fa fa-regular fa-trash"></i>&nbsp;
                                                     Excluir</a>
                                             </td>

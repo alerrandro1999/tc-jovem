@@ -11,12 +11,14 @@ class Membros extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $dates = [
         'data_nascimento',
-        'data-entrada'
+        'data_entrada'
     ];
 
-    protected $dateFormat = 'm-d-Y';
+    // protected $dateFormat = 'm-d-Y';
 
     public static function getAtivos()
     {
@@ -47,7 +49,4 @@ class Membros extends Model
         return Membros::whereDay('data_nascimento', Carbon::now()->day)
                   ->orderByRaw('day(data_nascimento) asc')->get();
     }
-
-
-    
 }
