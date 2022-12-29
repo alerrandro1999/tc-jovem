@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MembroController;
+use App\Models\Membros;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index']);
 
-Route::get('/dashboard', [AuthController::class, 'dashboard']);
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
-
-Route::get('/cadastro', [MembroController::class, 'index'])->name('cadastro');
 
 Route::get('/novo-membro', [MembroController::class, 'novoMembro'])->name('membro.novo');
 
@@ -37,3 +36,6 @@ Route::post('/customlogin', [AuthController::class, 'customLogin'])->name('auth.
 Route::post('/cadastro', [MembroController::class, 'cadastroMembro'])->name('membro.cadastro');
 
 Route::put('/update', [MembroController::class, 'update'])->name('membro.update');
+
+
+Route::get('/delete/{id}', [MembroController::class, 'delete'])->name('membro.delete');

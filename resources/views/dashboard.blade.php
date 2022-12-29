@@ -10,7 +10,7 @@
                     </li>
                     <li class="menu-title">Cadastros</li><!-- /.menu-title -->
                     <li>
-                        <a href="{{route('cadastro')}}"> <i class="menu-icon fa fa-plus-circle"></i>Membro</a>
+                        <a href="{{ route('membro.novo') }}"> <i class="menu-icon fa fa-plus-circle"></i>Membro</a>
                     </li>
 
                     <li class="menu-title">Icons</li><!-- /.menu-title -->
