@@ -35,18 +35,19 @@ class Membros extends Model
     public static function getCountAniversariantes()
     {
         return Membros::whereMonth('data_nascimento', Carbon::now()->month)
-                  ->orderByRaw('day(data_nascimento) asc')->count();
+            ->orderByRaw('day(data_nascimento) asc')->count();
     }
 
     public static function getAniversariantes()
     {
         return Membros::whereMonth('data_nascimento', Carbon::now()->month)
-                  ->orderByRaw('day(data_nascimento) asc')->get();
+            ->orderByRaw('day(data_nascimento) asc')->get();
     }
 
     public static function getDayAniversariantes()
     {
         return Membros::whereDay('data_nascimento', Carbon::now()->day)
-                  ->orderByRaw('day(data_nascimento) asc')->get();
+            ->whereMonth('data_nascimento', Carbon::now()->month)
+            ->orderByRaw('day(data_nascimento) asc')->get();
     }
 }
