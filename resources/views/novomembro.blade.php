@@ -7,10 +7,10 @@
             </div>
             <div class="card-body card-block">
                 @if (isset($data))
-                    <form action="{{ route('membro.update') }}" method="post">
+                    <form action="{{ route('membro.update') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                         @method('PUT')
                     @else
-                        <form action="{{ route('membro.cadastro') }}" method="post" class="form-horizontal">
+                        <form action="{{ route('membro.cadastro') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                 @endif
 
                 @csrf
@@ -36,10 +36,18 @@
                 </div>
                 <div class="row form-group">
                     <div class="col col-md-12">
+                        <label for="foto" class=" form-control-label">Foto</label>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <input type="file" id="foto" name="foto" class="form-control-file">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-12">
                         <label for="data-nascimento" class=" form-control-label">Data nascimento</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input type="date" id="data-nascimento" name="data-nascimento" placeholder=""
+                        <input type="date" id="data-nascimento" name="data_nascimento" placeholder=""
                             class="form-control"
                             value="{{ isset($data->data_nascimento) ? $data->data_nascimento->format('Y-m-d') : ' ' }}">
                     </div>
@@ -87,7 +95,7 @@
                         <label for="data-entrada" class=" form-control-label">Data de entrada</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input type="date" id="data-entrada" name="data-entrada" placeholder="" class="form-control"
+                        <input type="date" id="data-entrada" name="data_entrada" placeholder="" class="form-control"
                             value="{{ isset($data->data_entrada) ? $data->data_entrada->format('Y-m-d') : ' ' }}">
                     </div>
                 </div>

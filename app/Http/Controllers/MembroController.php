@@ -32,12 +32,22 @@ class MembroController extends Controller
    
     public function cadastroMembro(Request $request)
     {
-        $data['nome']            = $request['nome'];
-        $data['contato']         = $request['contato'];
-        $data['data_nascimento'] = $request['data-nascimento'];
-        $data['batizado']        = $request['batizado'];
-        $data['status']          = $request['status'];
-        $data['data_entrada']    = $request['data-entrada'];
+        $data['nome']            = $request->nome;              
+        $data['contato']         = $request->contato;
+        $data['data_nascimento'] = $request->data_nascimento;
+        $data['batizado']        = $request->batizado;
+        $data['status']          = $request->status;
+        $data['data_entrada']    = $request->data_entrada;
+
+        $requestImage = $request->foto;
+
+        $extension = $requestImage->extension();
+
+        $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+
+        $requestImage->move(public_path('images/membros'), $imageName);
+
+        $data['imagem'] = $imageName;
 
         DB::table('membros')->insert([$data]);
         
@@ -46,13 +56,24 @@ class MembroController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request);
         $membro = Membros::find($request['id']);
-        $membro->nome               = $request['nome'];   
-        $membro->contato            = $request['contato'];
-        $membro->data_nascimento    = $request['data-nascimento'];
-        $membro->batizado           = $request['batizado'];
-        $membro->status             = $request['status'];
-        $membro->data_entrada       = $request['data-entrada'];
+        $data['nome']            = $request->nome;              
+        $data['contato']         = $request->contato;
+        $data['data_nascimento'] = $request->data_nascimento;
+        $data['batizado']        = $request->batizado;
+        $data['status']          = $request->status;
+        $data['data_entrada']    = $request->data_entrada;
+
+        $requestImage = $request->foto;
+
+        $extension = $requestImage->extension();
+
+        $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+
+        $requestImage->move(public_path('images/membros'), $imageName);
+
+        $membro->imagem = $imageName;
 
         $membro->save();
 

@@ -122,6 +122,7 @@
                             <table id="cadastro-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Nome</th>
                                         <th>Contato</th>
                                         <th>Data Nascimento</th>
@@ -135,6 +136,7 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
+                                            <td><img src="images/membros/{{$item['imagem']}}" width="50px" height="50px"></td>
                                             <td>{{ $item['nome'] }}</td>
                                             <td>{{ $item['contato'] }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item['data_nascimento'])) }}</td>

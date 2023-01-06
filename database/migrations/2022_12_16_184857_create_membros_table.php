@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('contato');
-            $table->date('data-nascimento');
+            $table->string('imagem');
+            $table->date('data_nascimento');
             $table->integer('batizado');
             $table->integer('status');
-            $table->date('data-entrada');
-            $table->timestamps();
+            $table->date('data_entrada');
         });
     }
 
