@@ -29,28 +29,33 @@ class MembroController extends Controller
         return redirect("/")->with('invalido', 'Você não tem permissão');
     }
 
-   
+
     public function cadastroMembro(Request $request)
     {
-        $data['nome']            = $request->nome;              
+        $data['nome']            = $request->nome;
         $data['contato']         = $request->contato;
         $data['data_nascimento'] = $request->data_nascimento;
         $data['batizado']        = $request->batizado;
         $data['status']          = $request->status;
         $data['data_entrada']    = $request->data_entrada;
 
-        $requestImage = $request->foto;
+        if ($request->foto) {
 
-        $extension = $requestImage->extension();
+            $requestImage = $request->foto ? $request->foto : '';
 
-        $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+            $extension = $requestImage->extension();
 
-        $requestImage->move(public_path('images/membros'), $imageName);
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
 
-        $data['imagem'] = $imageName;
+            $requestImage->move(public_path('images/membros'), $imageName);
+
+            $data['imagem'] = $imageName;
+        }else {
+            $data['imagem'] = 'sem foto';
+        }
 
         DB::table('membros')->insert([$data]);
-        
+
         return redirect()->route('dashboard')->with('cadastrado', "Membro cadastrado com sucesso");
     }
 
@@ -58,7 +63,7 @@ class MembroController extends Controller
     {
         // dd($request);
         $membro = Membros::find($request['id']);
-        $data['nome']            = $request->nome;              
+        $data['nome']            = $request->nome;
         $data['contato']         = $request->contato;
         $data['data_nascimento'] = $request->data_nascimento;
         $data['batizado']        = $request->batizado;
