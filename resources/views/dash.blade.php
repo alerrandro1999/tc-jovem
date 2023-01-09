@@ -136,11 +136,11 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td>
+                                            <td class="td-imagem">
                                                 @if ($item['imagem'] != 'sem foto')
-                                                <img src="images/membros/{{$item['imagem']}}" width="50px" height="50px">
+                                                <img src="images/membros/{{$item['imagem']}}" width="50px" height="50px" class="imagem-membro-dash">
                                                 @else
-                                                <img src="images/tc-jovem.jpg" width="50px" height="50px">
+                                                <img src="images/tc-jovem.jpg" width="50px" height="50px" class="imagem-membro-dash">
                                                 @endif
                                             </td>
                                             <td>{{ $item['nome'] }}</td>

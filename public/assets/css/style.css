@@ -18,6 +18,7 @@ Googel Fonts  */
 
 */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+
 .buttons-excel{
   background: #00c292;
   color: #fff;
@@ -2514,4 +2515,13 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 
+.imagem-membro-dash{
+  object-fit: cover;
+}
+@media(max-width: 1000px)
+{
+  .td-imagem{
+    padding: 0 !important;
+  }
+}
 /*# sourceMappingURL=style.css.map */
