@@ -136,7 +136,13 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                         <tr>
-                                            <td><img src="images/membros/{{$item['imagem']}}" width="50px" height="50px"></td>
+                                            <td>
+                                                @if ($item['imagem'] != 'sem foto')
+                                                <img src="images/membros/{{$item['imagem']}}" width="50px" height="50px">
+                                                @else
+                                                <img src="images/tc-jovem.jpg" width="50px" height="50px">
+                                                @endif
+                                            </td>
                                             <td>{{ $item['nome'] }}</td>
                                             <td>{{ $item['contato'] }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item['data_nascimento'])) }}</td>

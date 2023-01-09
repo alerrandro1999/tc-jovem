@@ -14,15 +14,15 @@
                 @endif
 
                 @csrf
-                <input type="hidden" id="id" name="id" placeholder="" class="form-control"
-                    value="{{ isset($data->id) ? $data->id : ' ' }}">
+                <input type="hidden" id="id" name="id" placeholder="" class="form-control" 
+                    value="{{ isset($data->id) ? $data->id : '' }}">
                 <div class="row form-group">
                     <div class="col col-md-12">
                         <label for="nome" class=" form-control-label">Nome</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input type="text" id="nome" name="nome" placeholder="" class="form-control"
-                            value="{{ isset($data->nome) ? $data->nome : ' ' }}">
+                        <input type="text" id="nome" name="nome" placeholder="" class="form-control" 
+                            value="{{ isset($data->nome) ? $data->nome : '' }}" required>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -30,8 +30,8 @@
                         <label for="contato" class=" form-control-label">Contato</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input onkeyup="handlePhone(event)" maxlength="15" type="tel" id="contato" name="contato"
-                            placeholder="" class="form-control" value="{{ isset($data->contato) ? $data->contato : ' ' }}">
+                        <input onkeyup="handlePhone(event)" maxlength="15" type="tel" id="contato" name="contato" required
+                            placeholder="" class="form-control" value="{{ isset($data->contato) ? $data->contato : '' }}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -47,9 +47,9 @@
                         <label for="data-nascimento" class=" form-control-label">Data nascimento</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input type="date" id="data-nascimento" name="data_nascimento" placeholder=""
+                        <input type="date" id="data-nascimento" name="data_nascimento" placeholder="" required
                             class="form-control"
-                            value="{{ isset($data->data_nascimento) ? $data->data_nascimento->format('Y-m-d') : ' ' }}">
+                            value="{{ isset($data->data_nascimento) ? $data->data_nascimento->format('Y-m-d') : '' }}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -95,8 +95,8 @@
                         <label for="data-entrada" class=" form-control-label">Data de entrada</label>
                     </div>
                     <div class="col-12 col-md-6">
-                        <input type="date" id="data-entrada" name="data_entrada" placeholder="" class="form-control"
-                            value="{{ isset($data->data_entrada) ? $data->data_entrada->format('Y-m-d') : ' ' }}">
+                        <input type="date" id="data-entrada" name="data_entrada" placeholder="" class="form-control" required
+                            value="{{ isset($data->data_entrada) ? $data->data_entrada->format('Y-m-d') : '' }}">
                     </div>
                 </div>
                 <div class="row form-group">
